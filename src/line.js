@@ -1,14 +1,15 @@
 const LINE_CONSTANTS = {
   width: 800,
   height: 20,
-  speed: 1,
+  // speed: 1,
   endY: 640
 }
 
 export default class Line {
-  constructor(color) {
+  constructor(color, speed) {
     this.x = 40;
     this.y = 0;
+    this.speed = speed
     this.dimensions = {
       width: LINE_CONSTANTS.width,
       height: LINE_CONSTANTS.height
@@ -24,7 +25,7 @@ export default class Line {
 
   moveLine(ctx) {
     ctx.clearRect(this.x, this.y, this.dimensions.width, this.dimensions.height)
-    this.y = this.y + LINE_CONSTANTS.speed;
+    this.y = this.y + this.speed;
   }
 
   drawLine(ctx) {

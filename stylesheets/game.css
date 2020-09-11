@@ -73,6 +73,10 @@ html {
   display: none;
 }
 
+#music {
+  color: white;
+}
+
 .how-to-play-container{
   /* display: flex; */
   /* flex-direction: column; */

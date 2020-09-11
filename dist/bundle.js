@@ -117,21 +117,24 @@ class ColorBreak {
     this.lines = [];
     this.shotlines = [];
     this.strikes = [];
+    this.speed = 1;
     this.registerEvents();
     this.restart();
+   
 
   }
 
 
   animate() {
     
-    this.createLines();
     
+    this.createLines(this.speed)
+    
+
     this.lines.forEach((line, idx) => {
       if (idx === 0) { 
         line.animate(this.ctx)
         
-        // console.log(line)
 
       } else if ( this.lines[idx - 1].y - this.lines[idx].y >= 130) {
         this.lines[idx].animate(this.ctx)
@@ -149,8 +152,6 @@ class ColorBreak {
       if (this.lineup && this.collidedWithWrongColor(line, this.lineup)) {
         let shotIdx = this.shotlines.indexOf(this.lineup)
         this.removeLineStrike(this.lineup, shotIdx)
-        // this.strikes.push("1")
-        // debugger
       }
 
     })
@@ -169,6 +170,7 @@ class ColorBreak {
     }
 
     this.drawScore();
+   
     
     if (this.running) {
       requestAnimationFrame(this.animate.bind(this));
@@ -176,16 +178,19 @@ class ColorBreak {
   
   }
 
+  
+
   restart() {
     this.running = false;
     this.score = 0
-    this.animate();
+    // this.animate();
   }
   
   play() {
     this.running = true;
     this.modalEl.classList.remove('modal-on');
     this.modalEl.classList.add('modal-off')
+    // this.createLines(this.speed)
     this.animate();
   }
 
@@ -203,7 +208,7 @@ class ColorBreak {
   }
 
   gameOver() {
-    if (this.strikes.length >= 5) {
+    if (this.strikes.length >= 3) {
       return true 
     }
     return false
@@ -231,11 +236,62 @@ class ColorBreak {
     }
   }
 
+  handleMusic(e) {
+    e.preventDefault()
+    if (this.musicBtn.classList.contains('music-on')) {
+      this.music.play();
+      this.musicBtn.classList.remove('music-on')
+      this.musicBtn.classList.add('music-off')
+      this.musicBtn.innerHTML = "Music: Off"
+    } else if (this.musicBtn.classList.contains('music-off')) {
+      this.music.pause();
+      this.musicBtn.classList.remove('music-off')
+      this.musicBtn.classList.add('music-on')
+      this.musicBtn.innerHTML = "Music: On"
+    }
+
+  }
+
+  setDifficulty(e) {
+    e.preventDefault()
+    if (this.difficulty.classList.contains('easy')) {
+      this.difficulty.classList.remove('easy')
+      this.difficulty.classList.add('medium')
+      this.difficulty.innerHTML = "Good Challenge"
+      this.speed = 2
+      console.log(this.difficulty)
+    } else if (this.difficulty.classList.contains('medium')) {
+      this.difficulty.classList.remove('medium')
+      this.difficulty.classList.add('hard')
+      this.difficulty.innerHTML = "YOU'RE INSANE!"
+      this.speed = 3
+      console.log(this.difficulty)
+    } else if (this.difficulty.classList.contains('hard')) {
+      this.difficulty.classList.remove('hard')
+      this.difficulty.classList.add('easy')
+      this.difficulty.innerHTML = "Welcome Back To Easy"
+      this.speed = 1
+      console.log(this.difficulty)
+    } 
+  }
+
   registerEvents() {
     this.modalEl = document.getElementById('modal')
-  
+    this.music = document.getElementById('music')
+    this.musicBtn = document.getElementById('music-btn')
+    this.level = document.getElementById('level')
+    this.difficulty = document.getElementById('difficulty')
+    
+
+    this.handleDifficulty = this.setDifficulty.bind(this);
+    this.level.addEventListener('click', this.handleDifficulty)
+    
+    this.musicEvent = this.handleMusic.bind(this)
+    this.musicBtn.addEventListener('click', this.musicEvent)
+    
     this.startGameHandler = this.handlestart.bind(this);
     window.addEventListener("keydown", this.startGameHandler);
+    
     this.keydownEvent = this.handlekey.bind(this)         
     window.addEventListener("keydown", this.keydownEvent)
   }
@@ -294,9 +350,9 @@ class ColorBreak {
     this.shotlines.splice(idx, 1)
   }
 
-  createLines() {
+  createLines(speed) {
     let line = null;
-    line = this.lines.push(this.line = new _line__WEBPACK_IMPORTED_MODULE_0__["default"](COLORS[Math.floor(Math.random() * COLORS.length)])) 
+    line = this.lines.push(this.line = new _line__WEBPACK_IMPORTED_MODULE_0__["default"](COLORS[Math.floor(Math.random() * COLORS.length)], speed)) 
   }
 
 
@@ -338,14 +394,15 @@ __webpack_require__.r(__webpack_exports__);
 const LINE_CONSTANTS = {
   width: 800,
   height: 20,
-  speed: 1,
+  // speed: 1,
   endY: 640
 }
 
 class Line {
-  constructor(color) {
+  constructor(color, speed) {
     this.x = 40;
     this.y = 0;
+    this.speed = speed
     this.dimensions = {
       width: LINE_CONSTANTS.width,
       height: LINE_CONSTANTS.height
@@ -361,7 +418,7 @@ class Line {
 
   moveLine(ctx) {
     ctx.clearRect(this.x, this.y, this.dimensions.width, this.dimensions.height)
-    this.y = this.y + LINE_CONSTANTS.speed;
+    this.y = this.y + this.speed;
   }
 
   drawLine(ctx) {
@@ -405,7 +462,7 @@ __webpack_require__.r(__webpack_exports__);
 const LINE_CONSTANTS = {
   width: 800,
   height: 20,
-  speed: 3,
+  speed: 4,
   endY: 0
 }
 

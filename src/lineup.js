@@ -1,7 +1,7 @@
 const LINE_CONSTANTS = {
   width: 800,
   height: 20,
-  speed: 3,
+  speed: 4,
   endY: 0
 }
 
