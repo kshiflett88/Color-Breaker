@@ -1,15 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Color Break</title>
   <link rel="stylesheet" href="./stylesheets/game.css" />
+  <link rel="stylesheet" href="./stylesheets/buttons.css" />
 </head>
-<h1>COLOR BREAK</h1>
-<body>
-  <canvas id="game-canvas" height="640" width="880"></canvas>
-  <script type='text/javascript' src='./dist/bundle.js'></script>
-</body>
+<div class="container-of-all">
 
+  <div class="header-container">
+    <a href="https://github.com/kshiflett88">
+      <img src='./assests/images/github.png' class='github-icon' />
+    </a>
+    <h1>COLOR BREAK</h1>
+    <a href="https://www.linkedin.com/in/kodi-shiflett-5a1a0644/">
+      <img src='./assests/images/linkedin.jpg' class='linkedin-icon' />
+    </a>
+  </div>
+
+  <body class="game-body">
+
+    <div id='modal' class='modal-on'>
+      Press Space To Play
+    </div>
+    <canvas id="game-canvas" height="640" width="880"></canvas>
+    <script type='text/javascript' src='./dist/bundle.js'></script>
+    
+    
+    <div class="btns">
+      <div class="number-1">
+        <p>A</p>
+      </div>
+      <div class="number-2">
+        <p>S</p>
+      </div>
+      <div class="number-3">
+        <p>D</p>
+      </div>
+      <div class="number-4">
+        <p>F</p>
+      </div>
+    </div>
+  
+    <article class='how-to-play-container group'>
+      <section class='how-to-play'>
+        <h3>how to play</h3>
+        <p>
+          Use the keys 'A', 'S', 'D', & 'F' to send a line of that color upwards towards the falling lines.
+          Match the colors and don't let them reach the bottom!
+        </p>
+        <p>
+        </p>
+      </section>
+    </article>
+
+  </body>
+</div>
 </html>

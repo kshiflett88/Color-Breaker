@@ -1,14 +1,14 @@
 const LINE_CONSTANTS = {
   width: 800,
   height: 20,
-  speed: 1,
-  endY: 640
+  speed: 3,
+  endY: 0
 }
 
-export default class Line {
+export default class LineUp {
   constructor(color) {
     this.x = 40;
-    this.y = 0;
+    this.y = 620;
     this.dimensions = {
       width: LINE_CONSTANTS.width,
       height: LINE_CONSTANTS.height
@@ -16,20 +16,21 @@ export default class Line {
     this.color = color;
     this.endY = LINE_CONSTANTS.endY
   }
-  
+
   animate(ctx) {
-   this.moveLine(ctx)
-   this.drawLine(ctx)
+    this.moveLine(ctx)
+    this.drawLine(ctx)
+    
   }
 
   moveLine(ctx) {
     ctx.clearRect(this.x, this.y, this.dimensions.width, this.dimensions.height)
-    this.y = this.y + LINE_CONSTANTS.speed;
+    this.y = this.y - LINE_CONSTANTS.speed;
   }
 
   drawLine(ctx) {
-    ctx.fillStyle = this.color;
     ctx.beginPath();
+    ctx.fillStyle = this.color;
     ctx.fillRect(this.x, this.y, this.dimensions.width, this.dimensions.height)
     ctx.closePath();
   }
@@ -37,17 +38,16 @@ export default class Line {
   bounds() {
     return {
       left: this.x,
-      right: this.x + LINE_CONSTANTS.width,
+      right: this.x - LINE_CONSTANTS.width,
       top: this.y,
-      bottom: this.y + LINE_CONSTANTS.height
+      bottom: this.y - LINE_CONSTANTS.height
     }
   }
 
 
   outOfBounds() {
-    (this.y > 660)
+    return (this.y < 0)
   }
 
 
 }
-
