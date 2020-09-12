@@ -61,3 +61,45 @@ p {
   color: white;
 }
 
+.easy {
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  background: -webkit-linear-gradient(rgb(254, 26, 26), rgb(116, 54, 238), rgb(81, 247, 81));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.medium {
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  background: -webkit-linear-gradient(rgb(254, 26, 26), rgb(116, 54, 238), rgb(81, 247, 81));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hard {
+  font-size: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  background: -webkit-linear-gradient(rgb(254, 26, 26), rgb(116, 54, 238), rgb(81, 247, 81));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.fa-volume-up {
+  color: white;
+  font-size: 24px;
+  position: absolute;
+  display: flex;
+  top: 90px;
+  left: 10px;
+}
+
+.fa-volume-mute {
+  color: white;
+  font-size: 24px;
+  position: absolute;
+  display: flex;
+  top: 90px;
+  left: 10px;
+}
+

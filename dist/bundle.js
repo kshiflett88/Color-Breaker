@@ -238,16 +238,16 @@ class ColorBreak {
 
   handleMusic(e) {
     e.preventDefault()
-    if (this.musicBtn.classList.contains('music-on')) {
+    if (this.musicBtn.classList.contains('fa-volume-mute')) {
       this.music.play();
-      this.musicBtn.classList.remove('music-on')
-      this.musicBtn.classList.add('music-off')
-      this.musicBtn.innerHTML = "Music: Off"
-    } else if (this.musicBtn.classList.contains('music-off')) {
+      this.musicBtn.classList.remove('fa-volume-mute')
+      this.musicBtn.classList.add('fa-volume-up')
+      
+    } else if (this.musicBtn.classList.contains('fa-volume-up')) {
       this.music.pause();
-      this.musicBtn.classList.remove('music-off')
-      this.musicBtn.classList.add('music-on')
-      this.musicBtn.innerHTML = "Music: On"
+      this.musicBtn.classList.remove('fa-volume-up')
+      this.musicBtn.classList.add('fa-volume-mute')
+      
     }
 
   }
@@ -462,7 +462,7 @@ __webpack_require__.r(__webpack_exports__);
 const LINE_CONSTANTS = {
   width: 800,
   height: 20,
-  speed: 4,
+  speed: 5,
   endY: 0
 }
 

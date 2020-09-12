@@ -7,6 +7,7 @@
   <title>Color Break</title>
   <link rel="stylesheet" href="./stylesheets/game.css" />
   <link rel="stylesheet" href="./stylesheets/buttons.css" />
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 <div class="container-of-all">
 
@@ -29,11 +30,14 @@
       <audio  id="music">
         <source src="./assests/music/ElectricRabbit.mp3" >
       </audio>
-      <button id='music-btn' class="music-on">Music: On</button>
-
-      <button id='level' >Change Level</button>
-      <div id="difficulty" class="easy">Easy Peezy!</div>
-    
+      <i id='music-btn' class="fas fa-volume-mute"></i>
+     
+      
+      <div class="level">
+        <button id='level' >Change Level</button>
+        <div id="difficulty" class="easy">Eaaasy Peeeezy!</div>
+      </div>
+      
     <canvas id="game-canvas" height="640" width="880"></canvas>
     <script type='text/javascript' src='./dist/bundle.js'></script>
     

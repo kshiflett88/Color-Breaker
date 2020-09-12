@@ -5,12 +5,12 @@
   background-image: url('../assests/images/wave.jpg');
   background-size: 880px 650px;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .game-body {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 #background-canvas {
@@ -90,4 +90,11 @@ html {
   /* align-content: center; */
   justify-content: center;
   margin-left: 60px;
+}
+
+.level {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  left: 890px;
 }
