@@ -18,6 +18,7 @@ export default class ColorBreak {
     this.shotlines = [];
     this.strikes = [];
     this.speed = 1;
+    this.score = 0;
     this.registerEvents();
     this.restart();
    
@@ -67,9 +68,11 @@ export default class ColorBreak {
 
     if (this.gameOver()) {
       this.running = false;
+      this.restart()
     }
 
-    this.drawScore();
+    // this.drawScore();
+    this.updateScore();
    
     
     if (this.running) {
@@ -80,10 +83,13 @@ export default class ColorBreak {
 
   
 
-  restart() {
-    this.running = false;
-    this.score = 0
-    // this.animate();
+  restart(e) {
+    if (this.gameOver && e.key === 'r') {
+     e.preventDefault();
+     location.reload();
+     return false
+      
+    }
   }
   
   play() {
@@ -94,11 +100,6 @@ export default class ColorBreak {
     this.animate();
   }
 
-  // click(e) {
-  //   if (!this.running) {
-  //     this.play();
-  //   }
-  // }
 
   handlestart(e) {
     if (!this.running && e.key === ' ') {
@@ -109,6 +110,8 @@ export default class ColorBreak {
 
   gameOver() {
     if (this.strikes.length >= 3) {
+      this.gameOverEl.classList.remove('game-over-off');
+      this.gameOverEl.classList.add('game-over-on');
       return true 
     }
     return false
@@ -181,6 +184,8 @@ export default class ColorBreak {
     this.musicBtn = document.getElementById('music-btn')
     this.level = document.getElementById('level')
     this.difficulty = document.getElementById('difficulty')
+    this.scoreEl = document.getElementById('score')
+    this.gameOverEl = document.getElementById('game-over')
     
 
     this.handleDifficulty = this.setDifficulty.bind(this);
@@ -191,21 +196,30 @@ export default class ColorBreak {
     
     this.startGameHandler = this.handlestart.bind(this);
     window.addEventListener("keydown", this.startGameHandler);
+
+    this.restartGameHandler = this.restart.bind(this);
+    window.addEventListener("keydown", this.restartGameHandler);
     
     this.keydownEvent = this.handlekey.bind(this)         
     window.addEventListener("keydown", this.keydownEvent)
   }
 
-  drawScore() {
-    //loc will be the location 
-    const loc = { x: 730, y: 80 }
-    this.ctx.font = "bold 50pt serif";
-    this.ctx.fillStyle = "white";
-    this.ctx.fillText(this.score, loc.x, loc.y);
-    this.ctx.strokeStyle = "black";
-    this.ctx.lineWidth = 2;
-    this.ctx.strokeText(this.score, loc.x, loc.y);
+  updateScore(){
+    if (this.scoreEl.innerHTML !== `Your Score: ${this.score}`) {
+      this.scoreEl.innerHTML = `Your Score: ${this.score}`
+    }
   }
+
+  // drawScore() {
+  //   //loc will be the location 
+  //   const loc = { x: 730, y: 80 }
+  //   this.ctx.font = "bold 40pt serif";
+  //   this.ctx.fillStyle = "white";
+  //   this.ctx.fillText(this.score, loc.x, loc.y);
+  //   this.ctx.strokeStyle = "black";
+  //   this.ctx.lineWidth = 2;
+  //   this.ctx.strokeText(this.score, loc.x, loc.y);
+  // }
 
   collidedWith(line1, line2) {
     //check to see if falling line bottom matches shooting lines top

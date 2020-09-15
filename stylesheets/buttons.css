@@ -90,7 +90,7 @@ p {
   font-size: 24px;
   position: absolute;
   display: flex;
-  top: 90px;
+  top: 105px;
   left: 10px;
 }
 
@@ -99,7 +99,17 @@ p {
   font-size: 24px;
   position: absolute;
   display: flex;
-  top: 90px;
+  top: 105px;
   left: 10px;
 }
 
+/* .fa-google-play {
+   font-size: 34px;
+  font-family: sans-serif;
+  color: white;
+  position: absolute;
+  display: flex;
+  top: 400px;
+  left: 290px;
+  opacity: 0.5;
+} */
