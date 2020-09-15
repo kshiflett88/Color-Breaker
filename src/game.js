@@ -164,7 +164,7 @@ export default class ColorBreak {
       this.difficulty.classList.remove('medium')
       this.difficulty.classList.add('hard')
       this.difficulty.innerHTML = "YOU'RE INSANE!"
-      this.speed = 3
+      this.speed = 4
       console.log(this.difficulty)
     } else if (this.difficulty.classList.contains('hard')) {
       this.difficulty.classList.remove('hard')

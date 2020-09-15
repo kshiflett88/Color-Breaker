@@ -264,7 +264,7 @@ class ColorBreak {
       this.difficulty.classList.remove('medium')
       this.difficulty.classList.add('hard')
       this.difficulty.innerHTML = "YOU'RE INSANE!"
-      this.speed = 3
+      this.speed = 4
       console.log(this.difficulty)
     } else if (this.difficulty.classList.contains('hard')) {
       this.difficulty.classList.remove('hard')
@@ -462,7 +462,7 @@ __webpack_require__.r(__webpack_exports__);
 const LINE_CONSTANTS = {
   width: 800,
   height: 20,
-  speed: 5,
+  speed: 4,
   endY: 0
 }
 
