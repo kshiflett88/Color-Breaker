@@ -262,19 +262,19 @@ class ColorBreak {
       this.difficulty.classList.add('medium')
       this.difficulty.innerHTML = "Good Challenge"
       this.speed = 2
-      console.log(this.difficulty)
+      
     } else if (this.difficulty.classList.contains('medium')) {
       this.difficulty.classList.remove('medium')
       this.difficulty.classList.add('hard')
       this.difficulty.innerHTML = "YOU'RE INSANE!"
       this.speed = 4
-      console.log(this.difficulty)
+      
     } else if (this.difficulty.classList.contains('hard')) {
       this.difficulty.classList.remove('hard')
       this.difficulty.classList.add('easy')
       this.difficulty.innerHTML = "Welcome Back To Easy"
       this.speed = 1
-      console.log(this.difficulty)
+      
     } 
   }
 
@@ -384,7 +384,7 @@ class ColorBreak {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _game__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./game */ "./src/game.js");
-console.log('yo')
+
 
 
   const canvas = document.getElementById('game-canvas');
